@@ -39,7 +39,7 @@
 
   /* ---------- cover ---------- */
   .cover-band { background:var(--navy); color:#fff; margin:-0.42in -0.48in 0; padding:0.62in 0.55in 0.42in; }
-  .cover-band h1 { color:#fff; font-size:27pt; line-height:1.1; letter-spacing:-0.5px; }
+  .cover-band h1 { color:#fff; font-size:23pt; line-height:1.1; letter-spacing:-0.5px; }
   .cover-band .sub { color:#b9c8da; font-size:10.5pt; margin-top:8px; }
   .callout { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:22px; }
   .pick { border-radius:8px; padding:14px 16px; border:1.5px solid; }
@@ -114,7 +114,7 @@
 <section class="page">
   <div class="cover-band">
     <div style="font-size:8.5pt;letter-spacing:2px;color:#8fb3d9;font-weight:700;">FMKT 256 · AI EXTRA CREDIT · OPTION 2</div>
-    <h1 style="margin-top:10px;">{{ cfg.report_title }}</h1>
+    <h1 id="title" style="margin-top:10px;white-space:nowrap;">{{ cfg.report_title }}</h1>
     <div class="sub">{{ scored.n }} companies · AI-written one-pagers on live market data · Report generated {{ generated }}</div>
     <div class="sub" style="margin-top:4px;">{{ cfg.team }}</div>
   </div>

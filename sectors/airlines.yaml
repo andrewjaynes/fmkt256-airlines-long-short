@@ -12,7 +12,7 @@
 sector: "U.S. Airlines"
 slug: airlines            # folder name used for cached data / AI output
 report_title: "U.S. Airlines: One-Pagers and Long/Short Call"
-team: "Andrew Jaynes · Ryan Readlinger · Finn Kelly"
+team: "Andrew Jaynes (ahj20) · Finn Kelly (fmk11) · Ryan Readlinger (rr407)"
 code_url: "https://github.com/andrewjaynes/fmkt256-airlines-long-short"   # optional: public link to this code (GitHub / Google Drive) - shown in the report
 
 # At least 8 publicly traded companies. Order doesn't matter.

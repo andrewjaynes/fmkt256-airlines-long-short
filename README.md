@@ -1,6 +1,6 @@
 # Sector One-Pagers + AI Long/Short (FMKT 256 Extra Credit, Option 2)
 
-**Team:** Andrew Jaynes, Ryan Readlinger, Finn Kelly
+**Team:** Andrew Jaynes (ahj20), Finn Kelly (fmk11), Ryan Readlinger (rr407)
 
 This tool takes a list of tickers and produces a PDF with:
 
@@ -23,6 +23,7 @@ Everything is driven by a plain-text **sector file**. The code never changes.
 | Cover a whole new sector | Copy the sector file, change `sector`, `slug` and `tickers`, then run `python run.py sectors/<new>.yaml` |
 | Change the scoring emphasis | Edit the `weights:` numbers in the sector file |
 | Force fresh AI write-ups | `python run.py --refresh-ai` (needs an API key) |
+| Rebuild the PDF without changing any numbers | `python run.py --no-fetch` |
 | Change what the AI writes | Edit the plain-English prompts in `prompts/` |
 
 `sectors/railroads.yaml` is included as a working second example. Running

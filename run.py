@@ -3,10 +3,12 @@
     python run.py                          # default: sectors/airlines.yaml
     python run.py sectors/railroads.yaml   # any other sector file
     python run.py --refresh-ai             # force fresh AI write-ups (API mode)
+    python run.py --no-fetch               # rebuild the PDF from the last saved data
 
 Edit the sector file (tickers, weights, context), never this code.
 """
 import argparse
+import json
 import warnings
 from pathlib import Path
 
@@ -26,6 +28,7 @@ def main():
     ap = argparse.ArgumentParser(description="Sector one-pagers + AI long/short report")
     ap.add_argument("config", nargs="?", default="sectors/airlines.yaml")
     ap.add_argument("--refresh-ai", action="store_true", help="re-write all AI analysis (needs API key)")
+    ap.add_argument("--no-fetch", action="store_true", help="reuse the last saved data instead of pulling new prices")
     args = ap.parse_args()
 
     cfg_path = (ROOT / args.config).resolve()
@@ -33,8 +36,13 @@ def main():
     slug = cfg["slug"]
     print(f"\n== {cfg['sector']}: {len(cfg['tickers'])} companies ==")
 
-    print("[1/4] Pulling live market data and financials")
-    raw = fetch_all(cfg["tickers"], ROOT / "data" / slug)
+    saved = ROOT / "data" / slug / "raw_data.json"
+    if args.no_fetch and saved.exists():
+        print(f"[1/4] Reusing saved data from {saved.relative_to(ROOT)}")
+        raw = json.loads(saved.read_text())
+    else:
+        print("[1/4] Pulling live market data and financials")
+        raw = fetch_all(cfg["tickers"], ROOT / "data" / slug)
 
     print("[2/4] Computing metrics, peer ranks and composite scores")
     scored = score_all(raw, cfg["weights"])
