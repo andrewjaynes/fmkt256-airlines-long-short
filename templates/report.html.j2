@@ -140,6 +140,7 @@
     plain-text list of tickers and run one command:
     <div style="margin-top:6px;"><code style="background:#fff;border:1px solid #e9c46a;padding:3px 8px;border-radius:4px;font-size:8.5pt;">python run.py sectors/{{ config_name }}</code>
     <span class="small muted">&nbsp;See page 2 for the full how-to.</span></div>
+    {% if cfg.code_url %}<div class="small" style="margin-top:6px;"><b>Code, prompts &amp; sector files (public, no login):</b> <a href="{{ cfg.code_url }}">{{ cfg.code_url }}</a></div>{% endif %}
   </div>
 
   <div class="grid2" style="margin-top:16px;grid-template-columns:1.1fr 1fr;gap:22px;">
