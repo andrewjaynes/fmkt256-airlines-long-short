@@ -1,0 +1,55 @@
+# ============================================================
+#  SECTOR FILE  -  this is the ONLY file you edit to re-run.
+# ============================================================
+#  * New companies?  Change the tickers below.
+#  * New sector?     Copy this file (e.g. sectors/railroads.yaml),
+#                    change `sector` and `tickers`, then run:
+#                        python run.py sectors/railroads.yaml
+#  * Updated data?   Just run the same command again. Prices,
+#                    financials and scores are re-pulled live.
+# ============================================================
+
+sector: "U.S. Airlines"
+slug: airlines            # folder name used for cached data / AI output
+report_title: "U.S. Airlines: One-Pagers and Long/Short Call"
+team: "Andrew Jaynes · Ryan Readlinger · Finn Kelly"
+code_url: "https://github.com/andrewjaynes/fmkt256-airlines-long-short"   # optional: public link to this code (GitHub / Google Drive) - shown in the report
+
+# At least 8 publicly traded companies. Order doesn't matter.
+tickers:
+  - DAL    # Delta Air Lines
+  - UAL    # United Airlines
+  - AAL    # American Airlines
+  - LUV    # Southwest Airlines
+  - ALK    # Alaska Air Group (incl. Hawaiian)
+  - JBLU   # JetBlue Airways
+  - ULCC   # Frontier Group
+  - ALGT   # Allegiant Travel (incl. Sun Country)
+  - SKYW   # SkyWest
+
+# Extra context handed to the AI for every company in this sector
+# (plain English - edit freely, no code).
+sector_context: >
+  Key airline value drivers: jet fuel cost (the largest variable cost),
+  unit revenue (RASM/TRASM) vs unit cost ex-fuel (CASM-ex), capacity
+  discipline, premium and loyalty revenue mix, balance-sheet leverage and
+  liquidity, labor contracts, fleet/aircraft delivery constraints, and
+  competitive structure (network vs. low-cost vs. ultra-low-cost vs. regional).
+
+# How the quantitative composite score weights each pillar (must sum to 1).
+weights:
+  valuation: 0.25       # EV/EBITDA, forward P/E      (cheaper = better)
+  profitability: 0.20   # operating margin, net margin, ROE
+  balance_sheet: 0.25   # net debt / EBITDA, cash / revenue
+  momentum: 0.15        # 1-yr return, distance from 52-wk high
+  street: 0.15          # upside to analyst target, short interest
+
+ai:
+  # auto   = use Claude API if ANTHROPIC_API_KEY is set; otherwise reuse saved
+  #          AI write-ups, and for any company without one, write a ready-to-paste
+  #          prompt file you can drop into Claude.ai or ChatGPT (no coding).
+  # api    = always call the Claude API (with live web search)
+  # manual = never call the API; only reuse saved write-ups / make prompt files
+  mode: auto
+  model: claude-opus-5-5
+  refresh_after_days: 30   # API mode re-writes analysis older than this

@@ -1,0 +1,43 @@
+{
+  "ticker": "UAL",
+  "model_type": "Global network carrier",
+  "headline": "Biggest liquidity cushion and cheapest multiple of the big three, but weak Q4 guidance shows fuel can still swamp record revenue.",
+  "business": "Largest U.S. airline by revenue ($65.6B TTM), with seven U.S. hubs including Newark, Chicago, Denver, Houston and San Francisco, and the deepest Pacific and Atlantic network. Premium cabins and MileagePlus drive margin.",
+  "recent": [
+    "Q3 2026 revenue was a record $17.9B (+17.4% YoY) on higher yields; GAAP net income $1.03B, adjusted EPS $2.54 (-8.6%).",
+    "Fuel expense rose 61.6% to $4.84B as the average price hit $3.90/gal vs $2.43 a year earlier, with gallons roughly flat.",
+    "Q4 revenue growth guided above 20%, but per Skift, Q4 adjusted EPS guidance of $0.50-$1.50 (at $4.80/gal fuel) sits well below the $1.76 consensus."
+  ],
+  "strengths": [
+    "Highest ROE in the group (22%) and #2 net margin",
+    "$17.7B of available liquidity, the largest cushion of the peers",
+    "Pricing power: Q4 revenue expected up more than 20%"
+  ],
+  "risks": [
+    "$26.4B of debt and finance leases; free cash flow negative (-$0.6B TTM)",
+    "Highly exposed to jet fuel staying near $4.80/gal",
+    "International demand sensitive to the Middle East conflict"
+  ],
+  "catalysts": [
+    "Q4 2026 results and 2027 guide in January",
+    "Any easing in crude/jet fuel prices",
+    "Continued premium and loyalty revenue growth"
+  ],
+  "stance": "Overweight",
+  "sources": [
+    {
+      "title": "United Q3 2026 earnings release (SEC 8-K, Ex. 99.1)",
+      "url": "https://www.sec.gov/Archives/edgar/data/0000100517/000010051726000184/ual_erx09302026xex991.htm"
+    },
+    {
+      "title": "Skift: United Q4 guidance vs. expectations",
+      "url": "https://skift.com/?p=844906"
+    },
+    {
+      "title": "Beancount: United FY2026 Q3 earnings analysis",
+      "url": "https://beancount.io/blog/2026/10/21/united-airlines-fy2026-q3-earnings-analysis"
+    }
+  ],
+  "_as_of": "2026-11-03",
+  "_generated_by": "Claude (Opus 5.5) in Claude Code, with live web search of Q3 2026 earnings coverage"
+}

@@ -1,0 +1,39 @@
+{
+  "ticker": "AAL",
+  "model_type": "Global network carrier (most levered)",
+  "headline": "Record revenue cannot overcome the industry's heaviest debt load; American guides to a full-year loss as fuel costs jump 67%.",
+  "business": "World's largest airline by fleet and passengers, with fortress hubs at Dallas/Fort Worth and Charlotte and a strong Latin America network. AAdvantage is a major profit pool, but the balance sheet still carries pandemic-era debt.",
+  "recent": [
+    "Q3 2026 GAAP net loss of $269M ($0.41/share) and adjusted loss of $182M, despite record revenue of $16.3B (+19.3%).",
+    "Fuel costs rose $1.9B (+67.5%) as the price per gallon climbed to $3.85 from $2.37.",
+    "Full-year 2026 guided to an adjusted loss of $1.00-$1.60 per share; Q4 fuel assumed at about $4.70/gal; liquidity of $11.8B."
+  ],
+  "strengths": [
+    "$11.8B of available liquidity",
+    "Dominant DFW and CLT hubs plus a valuable loyalty program",
+    "Revenue momentum: +19% YoY"
+  ],
+  "risks": [
+    "$37B of debt: net debt/EBITDA of 8.4x, with negative book equity",
+    "Weakest operating margin of the big three (1.7%)",
+    "Lagging premium product vs. Delta and United"
+  ],
+  "catalysts": [
+    "Q4 results / 2027 deleveraging targets",
+    "Fuel price moves (very high operating leverage)",
+    "Corporate travel share recovery"
+  ],
+  "stance": "Underweight",
+  "sources": [
+    {
+      "title": "American Airlines Q3 2026 earnings release (SEC 8-K)",
+      "url": "https://www.sec.gov/Archives/edgar/data/0000006201/000000620126000064/a8kerexhibit991q3-26.htm"
+    },
+    {
+      "title": "24/7 Wall St: AAL Q3 2026, record revenue swamped by fuel",
+      "url": "https://247wallst.com/cards/american-airlines-group-q3-2026-earnings-aal-01m5hmj47wkydhrpta3x56pqrw"
+    }
+  ],
+  "_as_of": "2026-11-03",
+  "_generated_by": "Claude (Opus 5.5) in Claude Code, with live web search of Q3 2026 earnings coverage"
+}

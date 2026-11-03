@@ -1,0 +1,61 @@
+{
+  "long": {
+    "ticker": "SKYW",
+    "title": "Fuel-insulated earnings at the sector's lowest multiple",
+    "summary": "SkyWest is the one airline whose business model is built to withstand 2026's defining risk: a near-doubling of jet fuel. Its capacity-purchase contracts pass most fuel cost to United, Delta, American and Alaska, so it grew EPS while the majors guided sharply lower. Yet it is the cheapest stock in the group.",
+    "arguments": [
+      "Valuation: lowest EV/EBITDA (5.3x vs 9.8x peer median) and forward P/E (7.6x vs 11.0x); 100th-percentile valuation score.",
+      "Profitability: highest operating margin (14.0%) and net margin (9.8%) in the group, with ROE of 15%.",
+      "Earnings resilience: Q3 2026 EPS rose to $3.08 from $2.81, while DAL and LUV cut 2026 guidance and AAL and ALK now guide to full-year losses.",
+      "Entry point: shares are down 19% over a year and 31% below the 52-week high, with 44% upside to the consensus target ($117.83).",
+      "Clean positioning and capital return: short interest only 6%, leverage of 2.0x net debt/EBITDA, and $75M of buybacks in Q3."
+    ],
+    "risks": [
+      "Counterparty concentration: fuel-squeezed majors could trim regional flying or push harder at contract renewals.",
+      "The prorate segment does bear fuel and was a Q3 drag; a bigger prorate mix raises exposure.",
+      "Pilot availability and aircraft delivery timing can cap growth."
+    ],
+    "invalidation": "Exit if a major partner announces material cuts to SkyWest-operated capacity, or if the prorate drag pushes EPS growth negative."
+  },
+  "short": {
+    "ticker": "JBLU",
+    "title": "Widening losses on a balance sheet with no fuel cushion",
+    "summary": "JetBlue ranks last on the quantitative screen and the fundamentals confirm it. Revenue grew 21% in Q3 yet the net loss nearly doubled, and roughly $8.4B of debt sits on a ~$1.2B equity value. If fuel stays near Q4's $4.64/gal assumption, more losses and likely dilution follow.",
+    "arguments": [
+      "Lowest composite score in the group; bottom-two rank on valuation, profitability and momentum pillars.",
+      "Losses are widening: Q3 net loss of $257M vs $143M a year ago; nine-month loss of $823M; adjusted EPS missed consensus.",
+      "Extreme leverage: net debt/EBITDA of 94x and EV/EBITDA of 109x. EBITDA ($83M TTM) barely registers against debt.",
+      "Liquidity of ~$2.2B (incl. a $600M undrawn revolver) faces ~$1B of annual free-cash burn, making an equity raise or expensive debt likely.",
+      "Unlike SkyWest, JetBlue bears 100% of its fuel bill; Q4 assumes $4.64/gal."
+    ],
+    "risks": [
+      "Crowded trade: 33% of the float is short, so a fuel drop or a strategic deal could trigger a violent squeeze.",
+      "Spirit's exit is lifting unit revenue (Q4 RASM guided +18-22%).",
+      "A sub-$4 stock can carry high borrow cost. Size small, or express the view with puts or the pair trade."
+    ],
+    "invalidation": "Cover if jet fuel falls decisively (below ~$3.50/gal), JetBlue guides to positive operating margin, or a takeover or strategic investor emerges."
+  },
+  "runner_up_long": {
+    "ticker": "UAL",
+    "why": "Highest composite score (78) with 22% ROE, $17.7B of liquidity and 37% upside to target, but fully exposed to fuel, as its weak Q4 guide shows."
+  },
+  "runner_up_short": {
+    "ticker": "AAL",
+    "why": "Less crowded (16% short interest) and very liquid, with $37B of debt, negative book equity and a full-year loss guide. A cleaner borrow than JBLU."
+  },
+  "pair_trade": "Long SKYW / short JBLU, dollar-neutral. Both are small-cap airlines with similar beta, so the pair largely hedges sector moves while isolating the fuel-pass-through and balance-sheet gap between them.",
+  "screen_vs_judgment": "The screen ranks UAL first (78) by a hair over SKYW (76). We choose SKYW because the scores cannot see contract structure: SKYW's CPAs insulate it from the fuel shock that just forced UAL's Q4 guide well below consensus. The short agrees with the screen (JBLU, ranked last).",
+  "_as_of": "2026-11-03",
+  "_generated_by": "Claude (Opus 5.5) in Claude Code, with live web search of Q3 2026 earnings coverage",
+  "_universe": [
+    "AAL",
+    "ALGT",
+    "ALK",
+    "DAL",
+    "JBLU",
+    "LUV",
+    "SKYW",
+    "UAL",
+    "ULCC"
+  ]
+}

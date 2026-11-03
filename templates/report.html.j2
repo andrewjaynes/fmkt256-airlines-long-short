@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{ cfg.report_title }}</title>
+<style>
+  @page { size: Letter; margin: 0; }
+  :root {
+    --navy:#0b2545; --teal:#13807a; --ink:#1d2733; --muted:#5b6876; --line:#dfe4ea;
+    --soft:#f4f6f9; --green:#1a7f4b; --red:#b3261e; --amber:#a86b00;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:#fff; }
+  body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color:var(--ink); font-size:8.6pt; line-height:1.38;
+         -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { width:8.5in; height:11in; padding:0.42in 0.48in 0.36in; position:relative; overflow:hidden; page-break-after:always; }
+  .page:last-child { page-break-after:auto; }
+  h1,h2,h3,h4 { margin:0; color:var(--navy); }
+  h2 { font-size:17pt; letter-spacing:-0.2px; }
+  h3 { font-size:9.6pt; text-transform:uppercase; letter-spacing:0.6px; margin:9px 0 4px; color:var(--teal); }
+  p { margin:0 0 5px; }
+  ul { margin:0; padding-left:13px; } li { margin-bottom:2.5px; }
+  a { color:var(--teal); }
+  .muted { color:var(--muted); }
+  .small { font-size:7.4pt; }
+  .tiny { font-size:6.6pt; }
+  .footer { position:absolute; left:0.48in; right:0.48in; bottom:0.2in; font-size:6.5pt; color:var(--muted);
+            display:flex; justify-content:space-between; border-top:1px solid var(--line); padding-top:4px; }
+  .tag { display:inline-block; padding:2px 8px; border-radius:3px; font-weight:700; font-size:7.6pt; letter-spacing:0.5px; color:#fff; }
+  .tag.long { background:var(--green); } .tag.short { background:var(--red); }
+  .tag.ow { background:#e4f3ea; color:var(--green); } .tag.uw { background:#fbe7e5; color:var(--red); }
+  .tag.n { background:#eef1f4; color:var(--muted); }
+  table { border-collapse:collapse; width:100%; }
+  .bar { height:7px; background:#e9edf1; border-radius:4px; overflow:hidden; }
+  .bar > span { display:block; height:100%; background:var(--teal); border-radius:4px; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .box { border:1px solid var(--line); border-radius:6px; padding:9px 11px; }
+  code, pre { font-family: Menlo, Consolas, monospace; }
+
+  /* ---------- cover ---------- */
+  .cover-band { background:var(--navy); color:#fff; margin:-0.42in -0.48in 0; padding:0.62in 0.55in 0.42in; }
+  .cover-band h1 { color:#fff; font-size:27pt; line-height:1.1; letter-spacing:-0.5px; }
+  .cover-band .sub { color:#b9c8da; font-size:10.5pt; margin-top:8px; }
+  .callout { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:22px; }
+  .pick { border-radius:8px; padding:14px 16px; border:1.5px solid; }
+  .pick.long { border-color:var(--green); background:#f2faf5; } .pick.short { border-color:var(--red); background:#fdf3f2; }
+  .pick .tk { font-size:30pt; font-weight:800; letter-spacing:-1px; line-height:1; }
+  .pick.long .tk { color:var(--green); } .pick.short .tk { color:var(--red); }
+  .pick .ttl { font-weight:700; font-size:10pt; margin:6px 0 5px; color:var(--ink); }
+  .reuse-banner { margin-top:18px; background:#fff8e6; border:1.5px solid #e9c46a; border-radius:8px; padding:12px 16px; }
+  .reuse-banner b { color:#7a5200; }
+  .chips span { display:inline-block; border:1px solid var(--line); border-radius:12px; padding:2px 9px; margin:0 4px 4px 0; font-size:7.8pt; }
+
+  /* ---------- reuse page ---------- */
+  .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:10px 0 12px; }
+  .step { border:1px solid var(--line); border-top:4px solid var(--teal); border-radius:6px; padding:10px; }
+  .step .n { font-size:20pt; font-weight:800; color:var(--teal); line-height:1; }
+  .step .t { font-weight:700; margin:4px 0; color:var(--navy); font-size:9.2pt; }
+  pre.cfg { background:#0f1b2b; color:#d6e2f0; border-radius:6px; padding:9px 11px; font-size:6.6pt; line-height:1.38; margin:0; white-space:pre-wrap; }
+  pre.cfg .hl { background:#3b4f1d; color:#e9ffcc; }
+  .flow { display:flex; align-items:stretch; gap:6px; margin:8px 0 4px; }
+  .flow div { flex:1; background:var(--soft); border-radius:5px; padding:6px 7px; font-size:7.3pt; }
+  .flow div b { color:var(--navy); display:block; font-size:8pt; }
+  .flow .arrow { flex:0 0 12px; background:none; padding:0; display:flex; align-items:center; color:var(--muted); font-size:12pt; }
+  table.how td, table.how th { border-bottom:1px solid var(--line); padding:5px 6px; text-align:left; vertical-align:top; font-size:7.8pt; }
+  table.how th { background:var(--soft); color:var(--navy); }
+  table.how td:last-child { font-weight:600; }
+
+  /* ---------- dashboard ---------- */
+  table.dash th { font-size:6.9pt; color:var(--muted); text-transform:uppercase; letter-spacing:0.3px; text-align:right; padding:4px 4px; border-bottom:1.5px solid var(--navy); }
+  table.dash td { padding:4px 4px; border-bottom:1px solid var(--line); text-align:right; font-variant-numeric:tabular-nums; font-size:7.8pt; }
+  table.dash td.l, table.dash th.l { text-align:left; }
+  table.dash tr.long td { background:#eef8f2; } table.dash tr.short td { background:#fcefed; }
+  table.stance td { font-size:7.1pt; padding:3px 4px; line-height:1.3; }
+  .heat { display:inline-block; width:24px; padding:1px 0; border-radius:3px; text-align:center; font-size:7pt; font-weight:600; }
+
+  /* ---------- one-pager ---------- */
+  .op-head { display:flex; justify-content:space-between; align-items:flex-end; border-bottom:2.5px solid var(--navy); padding-bottom:6px; }
+  .op-head .tk { font-size:25pt; font-weight:800; color:var(--navy); letter-spacing:-0.8px; line-height:1; }
+  .op-head .nm { font-size:10.5pt; font-weight:600; margin-top:2px; }
+  .op-head .right { text-align:right; }
+  .op-head .px { font-size:15pt; font-weight:700; color:var(--navy); }
+  .headline { background:var(--soft); border-left:4px solid var(--teal); padding:6px 10px; margin:8px 0 2px; font-size:9pt; font-weight:600; color:var(--navy); }
+  .op-body { display:grid; grid-template-columns:2.95in 1fr; gap:16px; margin-top:6px; }
+  table.mt td { padding:1.9px 3px; border-bottom:1px solid #edf0f3; font-size:7.6pt; font-variant-numeric:tabular-nums; }
+  table.mt td.v { text-align:right; font-weight:700; }
+  table.mt td.md { text-align:right; color:var(--muted); }
+  table.mt td.rk { text-align:right; width:30px; }
+  table.mt tr.g td { font-size:6.8pt; color:var(--teal); font-weight:700; text-transform:uppercase; letter-spacing:0.4px; border-bottom:1px solid var(--teal); padding-top:6px; }
+  table.mt th { font-size:6.5pt; color:var(--muted); font-weight:600; text-align:right; padding:0 3px 2px; }
+  .rk-pill { display:inline-block; min-width:22px; text-align:center; border-radius:8px; font-size:6.6pt; font-weight:700; padding:0 3px; }
+  .rk-good { background:#e4f3ea; color:var(--green); } .rk-mid { background:#eef1f4; color:var(--muted); } .rk-bad { background:#fbe7e5; color:var(--red); }
+  .pillars td { padding:2px 3px; font-size:7.5pt; }
+  .sr { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .charts { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:8px; }
+  .charts svg { width:100%; height:auto; }
+  .pending { border:1.5px dashed var(--amber); background:#fffaf0; border-radius:6px; padding:10px; color:#6b4a00; }
+  .src a { color:var(--muted); }
+
+  /* ---------- long/short ---------- */
+  .ls-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:10px; }
+  .ls { border-radius:8px; padding:11px 13px; }
+  .ls.long { background:#f2faf5; border:1.5px solid var(--green); } .ls.short { background:#fdf3f2; border:1.5px solid var(--red); }
+  .ls .tk { font-size:24pt; font-weight:800; line-height:1; }
+  .ls.long .tk, .ls.long h3 { color:var(--green); } .ls.short .tk, .ls.short h3 { color:var(--red); }
+  .kv { display:grid; grid-template-columns:repeat(4,1fr); gap:5px; margin:7px 0; }
+  .kv div { background:#fff; border-radius:4px; padding:3px 5px; font-size:6.8pt; color:var(--muted); }
+  .kv b { display:block; font-size:9pt; color:var(--ink); }
+</style>
+</head>
+<body>
+
+{# =============================== 1. COVER =============================== #}
+<section class="page">
+  <div class="cover-band">
+    <div style="font-size:8.5pt;letter-spacing:2px;color:#8fb3d9;font-weight:700;">FMKT 256 · AI EXTRA CREDIT · OPTION 2</div>
+    <h1 style="margin-top:10px;">{{ cfg.report_title }}</h1>
+    <div class="sub">{{ scored.n }} companies · AI-written one-pagers on live market data · Report generated {{ generated }}</div>
+    <div class="sub" style="margin-top:4px;">{{ cfg.team }}</div>
+  </div>
+
+  <div class="callout">
+    {% for side in ['long','short'] %}{% set p = ls.get(side) %}
+    <div class="pick {{ side }}">
+      <div class="tag {{ side }}">BEST {{ side|upper }}</div>
+      {% if p %}
+      <div class="tk" style="margin-top:8px;">{{ p.ticker }}</div>
+      <div class="muted small">{{ names.get(p.ticker, '') }} · composite rank {{ by_tk[p.ticker].c.rank }} of {{ scored.n }}</div>
+      <div class="ttl">{{ p.title }}</div>
+      <div class="small">{{ p.summary }}</div>
+      {% else %}<div class="pending" style="margin-top:8px;">Long/short decision pending. See prompts_to_paste/LONG_SHORT.md</div>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  {% if ls.pair_trade %}<p class="small" style="margin-top:9px;"><b>Pair trade:</b> {{ ls.pair_trade }}</p>{% endif %}
+
+  <div class="reuse-banner">
+    <b>Built to be re-run, not re-coded.</b> Every number in this report is pulled live and every page is generated
+    automatically. To analyze <b>different companies</b>, a <b>different sector</b>, or simply <b>refresh the data</b>, edit one
+    plain-text list of tickers and run one command:
+    <div style="margin-top:6px;"><code style="background:#fff;border:1px solid #e9c46a;padding:3px 8px;border-radius:4px;font-size:8.5pt;">python run.py sectors/{{ config_name }}</code>
+    <span class="small muted">&nbsp;See page 2 for the full how-to.</span></div>
+  </div>
+
+  <div class="grid2" style="margin-top:16px;grid-template-columns:1.1fr 1fr;gap:22px;">
+  <div>
+  <h3 style="margin-top:0;">Quantitative screen: composite score (0–100)</h3>
+  <table class="pillars" style="width:100%;">
+    {% for c in companies %}
+    <tr><td style="width:16px;" class="muted">{{ c.c.rank }}</td><td style="width:40px;"><b>{{ c.ticker }}</b></td>
+      <td><div class="bar" style="height:9px;"><span style="width:{{ c.c.composite }}%;background:{{ '#1a7f4b' if c.role=='LONG' else '#b3261e' if c.role=='SHORT' else '#13807a' }};"></span></div></td>
+      <td style="width:24px;text-align:right;"><b>{{ c.c.composite|round|int }}</b></td>
+      <td style="width:44px;">{% if c.role %}<span class="tag {{ c.role|lower }}" style="font-size:6pt;padding:1px 4px;">{{ c.role }}</span>{% endif %}</td></tr>
+    {% endfor %}
+  </table>
+  <p class="tiny muted" style="margin-top:4px;">Score = weighted percentile rank on valuation, profitability, balance sheet, momentum and street view. The AI makes the final call (p. {{ 4 + scored.n }}).</p>
+  </div>
+  <div>
+  <h3 style="margin-top:0;">Universe</h3>
+  <div class="chips">{% for c in companies %}<span><b>{{ c.ticker }}</b> {{ c.name|replace(', Inc.','')|replace(' Inc.','') }}</span>{% endfor %}</div>
+
+  <h3>What's inside</h3>
+  <table class="how" style="width:100%;">
+    <tr><td>p. 2</td><td>How to reuse this tool with new companies or new data, without new code</td></tr>
+    <tr><td>p. 3</td><td>Sector dashboard: side-by-side comparison, scores, valuation map</td></tr>
+    <tr><td>p. 4–{{ 3 + scored.n }}</td><td>One-page summary per company (ordered by composite score)</td></tr>
+    <tr><td>p. {{ 4 + scored.n }}</td><td>Long / short decision memo</td></tr>
+    <tr><td>p. {{ 5 + scored.n }}</td><td>Methodology, data sources and AI prompts</td></tr>
+  </table>
+  </div>
+  </div>
+  <div class="footer"><span>Market data as of {{ fetched[:10] }} (Yahoo Finance). For educational purposes only, not investment advice.</span><span>1</span></div>
+</section>
+
+{# =============================== 2. HOW TO REUSE =============================== #}
+<section class="page">
+  <h2>How to reuse this: new companies or new data, zero new code</h2>
+  <p class="muted" style="margin-top:3px;">The analysis is driven by a plain-text <b>sector file</b>. The code never changes. Only the list of tickers does.</p>
+
+  <div class="steps">
+    <div class="step"><div class="n">1</div><div class="t">Edit the ticker list</div>
+      Open <code>sectors/{{ config_name }}</code> in any text editor. Add, remove or replace tickers. For a new sector,
+      copy the file (e.g. <code>sectors/railroads.yaml</code>) and change the name and tickers.</div>
+    <div class="step"><div class="n">2</div><div class="t">Run one command</div>
+      <code>python run.py sectors/{{ config_name }}</code><br>Prices, financials, peer medians, ranks, charts and scores are all
+      re-pulled and recomputed live for whatever tickers are listed.</div>
+    <div class="step"><div class="n">3</div><div class="t">AI writes the analysis</div>
+      With a Claude API key, Claude searches the web and writes every one-pager plus the long/short memo automatically.
+      Without one, the tool writes <b>copy-paste prompts</b> for Claude.ai or ChatGPT, still with no coding.</div>
+  </div>
+
+  <div class="grid2" style="grid-template-columns:1.05fr 1fr;">
+    <div>
+      <h3 style="margin-top:0;">The entire input for this report</h3>
+<pre class="cfg">{% for line in config_text.splitlines() %}{% if line.strip().startswith('- ') and '#' in line or line.startswith('sector:') or line.startswith('tickers:') %}<span class="hl">{{ line }}</span>{% else %}{{ line }}{% endif %}
+{% endfor %}</pre>
+    </div>
+    <div>
+      <h3 style="margin-top:0;">What happens when you run it</h3>
+      <div class="flow">
+        <div><b>1 · Fetch</b>Live prices, statements, consensus for each ticker</div><div class="arrow">→</div>
+        <div><b>2 · Score</b>21 metrics, peer medians, ranks, 0–100 composite</div>
+      </div>
+      <div class="flow">
+        <div><b>3 · AI</b>Claude researches news and writes each one-pager and picks long/short</div><div class="arrow">→</div>
+        <div><b>4 · Render</b>Charts + pages, printed to this PDF</div>
+      </div>
+      <h3>Common scenarios</h3>
+      <table class="how">
+        <tr><th>I want to…</th><th>Do this</th></tr>
+        <tr><td>Refresh with today's data</td><td>Re-run the same command</td></tr>
+        <tr><td>Add / drop a company</td><td>Edit the <code>tickers:</code> list, re-run</td></tr>
+        <tr><td>Cover a new sector</td><td>Copy the sector file, change name + tickers</td></tr>
+        <tr><td>Emphasize value over momentum</td><td>Change the <code>weights:</code> numbers</td></tr>
+        <tr><td>Force new AI write-ups</td><td><code>python run.py --refresh-ai</code></td></tr>
+        <tr><td>Change what the AI writes</td><td>Edit the plain-English prompt in <code>prompts/</code></td></tr>
+      </table>
+      <p class="small muted" style="margin-top:6px;">Ships with a second sector file, <code>sectors/railroads.yaml</code>, as a ready-made example.
+        Saved AI write-ups are stored as JSON in <code>analysis/&lt;sector&gt;/</code> and reused until they are
+        {{ cfg.ai.refresh_after_days }} days old.</p>
+    </div>
+  </div>
+  {% if other_sectors %}
+  <h3>Proof: the same code, run on a different sector file</h3>
+  {% for o in other_sectors %}
+  <div class="box" style="background:#f2faf5;border-color:#bfe0cc;">
+    <b>{{ o.sector }}</b> &nbsp;<code class="small">python run.py sectors/{{ o.config }}</code>
+    <span class="small muted">&nbsp;generated {{ o.generated|replace('T',' ') }} · {{ o.n }} companies · zero code changes</span>
+    <div class="chips" style="margin-top:6px;">{% for tk, sc in o.ranking %}<span><b>{{ loop.index }}. {{ tk }}</b> {{ sc }}</span>{% endfor %}</div>
+    <div class="tiny muted">Composite scores computed live from the sector file's ticker list.{% if o.ai_pending %} AI write-ups for that run were left as copy-paste prompts (no API key), which shows the no-code path.{% endif %}</div>
+  </div>
+  {% endfor %}
+  {% endif %}
+  {% if cfg.code_url %}<p style="margin-top:10px;"><b>Code, sector files and prompts:</b> <a href="{{ cfg.code_url }}">{{ cfg.code_url }}</a></p>{% endif %}
+  <div class="footer"><span>{{ cfg.report_title }}</span><span>2</span></div>
+</section>
+
+{# =============================== 3. DASHBOARD =============================== #}
+<section class="page">
+  <h2>Sector dashboard: {{ cfg.sector }}</h2>
+  <p class="muted" style="margin-top:3px;">Companies ranked by composite score (0–100). Each pillar is a percentile rank within this peer group; green = better.</p>
+  <table class="dash" style="margin-top:8px;">
+    <tr><th class="l">#</th><th class="l">Company</th><th>Price</th><th>Mkt cap</th><th>EV/EBITDA</th><th>Fwd P/E</th><th>Op. mgn</th>
+        <th>ND/EBITDA</th><th>1y ret.</th><th>Short int.</th>
+        {% for p in pillars %}<th style="text-align:center;">{{ {'valuation':'Val.','profitability':'Prof.','balance_sheet':'B/S','momentum':'Mom.','street':'Street'}[p] }}</th>{% endfor %}<th>Score</th></tr>
+    {% for c in companies %}{% set m = c.m %}
+    <tr class="{{ c.role|lower if c.role else '' }}">
+      <td class="l"><b>{{ c.c.rank }}</b></td>
+      <td class="l" style="white-space:nowrap;"><b>{{ c.ticker }}</b> <span class="muted small">{{ c.name|replace(', Inc.','')|replace(' Inc.','')|replace(' Company','')|replace(' Holdings','')|replace(' Corporation','')|replace(' Group','')|replace(' Co.','')|truncate(17, True, '…') }}</span>
+        {% if c.role %}<span class="tag {{ c.role|lower }}" style="font-size:6pt;padding:1px 4px;">{{ c.role }}</span>{% endif %}</td>
+      <td>{{ m.price|price }}</td><td>{{ m.market_cap|money }}</td><td>{{ m.ev_ebitda|mult }}</td><td>{{ m.pe_fwd|mult }}</td>
+      <td>{{ m.op_margin|pct_plain }}</td><td>{{ m.net_debt_ebitda|mult }}</td><td>{{ m.ret_1y|pct(0) }}</td><td>{{ m.short_pct|pct_plain }}</td>
+      {% for p in pillars %}{% set s = c.c.pillars[p] %}
+      <td style="text-align:center;"><span class="heat" style="background:hsl({{ (s*1.2)|round }},55%,{{ 92 - (s-50)|abs*0.12 }}%);color:hsl({{ (s*1.2)|round }},60%,25%);">{{ s|round|int }}</span></td>{% endfor %}
+      <td><b>{{ c.c.composite|round|int }}</b></td>
+    </tr>{% endfor %}
+    <tr><td></td><td class="l muted">Peer median</td><td></td><td class="muted">{{ scored.medians.market_cap|money }}</td><td class="muted">{{ scored.medians.ev_ebitda|mult }}</td>
+      <td class="muted">{{ scored.medians.pe_fwd|mult }}</td><td class="muted">{{ scored.medians.op_margin|pct_plain }}</td><td class="muted">{{ scored.medians.net_debt_ebitda|mult }}</td>
+      <td class="muted">{{ scored.medians.ret_1y|pct(0) }}</td><td class="muted">{{ scored.medians.short_pct|pct_plain }}</td><td colspan="6"></td></tr>
+  </table>
+  <p class="tiny muted" style="margin-top:3px;">n/m = not meaningful (negative EBITDA or earnings). Pillar weights: {% for p in pillars %}{{ pillars[p] }} {{ (cfg.weights[p]*100)|round|int }}%{{ ', ' if not loop.last }}{% endfor %}. ND = net debt.</p>
+
+  <div class="grid2" style="margin-top:10px;">
+    <div class="box">{{ scatter_svg|safe }}</div>
+    <div class="box">{{ returns_svg|safe }}</div>
+  </div>
+
+  <h3>Business models and AI stance at a glance</h3>
+  <table class="dash stance">
+    <tr><th class="l">Ticker</th><th class="l">Model</th><th class="l">AI headline</th><th style="text-align:center;">Stance</th></tr>
+    {% for c in companies %}<tr class="{{ c.role|lower if c.role else '' }}">
+      <td class="l"><b>{{ c.ticker }}</b></td><td class="l" style="white-space:nowrap;">{{ c.w.model_type if c.w else '–' }}</td>
+      <td class="l">{{ c.w.headline if c.w else 'AI write-up pending' }}</td>
+      <td style="text-align:center;">{% if c.w %}{% set st = c.w.stance %}<span class="tag {{ 'ow' if st=='Overweight' else 'uw' if st=='Underweight' else 'n' }}" style="font-size:6.4pt;">{{ st }}</span>{% endif %}</td>
+    </tr>{% endfor %}
+  </table>
+  <div class="footer"><span>Data: Yahoo Finance, fetched {{ fetched[:16]|replace('T',' ') }} UTC</span><span>3</span></div>
+</section>
+
+{# =============================== 4. ONE-PAGERS =============================== #}
+{% for c in companies %}{% set m = c.m %}{% set w = c.w %}
+<section class="page">
+  <div class="op-head">
+    <div>
+      <div class="tk">{{ c.ticker }} {% if c.role %}<span class="tag {{ c.role|lower }}" style="vertical-align:middle;font-size:9pt;">BEST {{ c.role }}</span>{% endif %}</div>
+      <div class="nm">{{ c.name }}</div>
+      <div class="muted small">{{ w.model_type if w else c.info.industry }} · {{ c.info.city }}, {{ c.info.state }} · {{ c.info.fullTimeEmployees|num(0) }} employees</div>
+    </div>
+    <div class="right">
+      <div class="px">{{ m.price|price }}</div>
+      <div class="small muted">52-wk {{ m.fifty_two_low|price }} – {{ m.fifty_two_high|price }} · target {{ m.target|price }}</div>
+      <div style="margin-top:4px;">
+        <span class="tag" style="background:var(--navy);">SCORE {{ c.c.composite|round|int }}/100 · RANK {{ c.c.rank }} OF {{ scored.n }}</span>
+        {% if w %}{% set st = w.stance %}<span class="tag {{ 'ow' if st=='Overweight' else 'uw' if st=='Underweight' else 'n' }}">{{ st|upper }}</span>{% endif %}
+      </div>
+    </div>
+  </div>
+  {% if w %}<div class="headline">{{ w.headline }}</div>{% endif %}
+
+  <div class="op-body">
+    <div>
+      <table class="mt">
+        <tr><th></th><th>{{ c.ticker }}</th><th>Peer med.</th><th>Rank</th></tr>
+        {% for r in c.rows %}
+          {% if r.group %}<tr class="g"><td colspan="4">{{ r.group }}</td></tr>{% endif %}
+          <tr><td>{{ r.label }}</td><td class="v">{{ r.value }}</td><td class="md">{{ r.median }}</td>
+            <td class="rk">{% if r.rank %}<span class="rk-pill {{ 'rk-good' if r.rank <= 3 else 'rk-bad' if r.rank > scored.n - 3 else 'rk-mid' }}">{{ r.rank }}/{{ scored.n }}</span>{% endif %}</td></tr>
+        {% endfor %}
+      </table>
+      <h3>Score by pillar (vs. peers)</h3>
+      <table class="pillars">
+        {% for p in pillars %}{% set s = c.c.pillars[p] %}
+        <tr><td style="width:78px;">{{ pillars[p] }}</td><td><div class="bar"><span style="width:{{ s }}%;background:{{ '#1a7f4b' if s>=67 else '#b3261e' if s<34 else '#13807a' }};"></span></div></td><td style="width:22px;text-align:right;"><b>{{ s|round|int }}</b></td></tr>
+        {% endfor %}
+      </table>
+    </div>
+
+    <div>
+      {% if w %}
+      <h3 style="margin-top:0;">Business</h3>
+      <p>{{ w.business }}</p>
+      <h3>Latest quarter &amp; guidance</h3>
+      <ul>{% for b in w.recent %}<li>{{ b }}</li>{% endfor %}</ul>
+      <div class="sr">
+        <div><h3 style="color:var(--green);">Strengths</h3><ul>{% for b in w.strengths %}<li>{{ b }}</li>{% endfor %}</ul></div>
+        <div><h3 style="color:var(--red);">Risks</h3><ul>{% for b in w.risks %}<li>{{ b }}</li>{% endfor %}</ul></div>
+      </div>
+      <h3>Catalysts (6–12 months)</h3>
+      <ul>{% for b in w.catalysts %}<li>{{ b }}</li>{% endfor %}</ul>
+      {% else %}
+      <div class="pending"><b>AI write-up pending.</b> The quantitative half of this page is complete. To add the qualitative half without
+        coding, paste <code>output/{{ cfg.slug }}/prompts_to_paste/{{ c.ticker }}.md</code> into Claude.ai or ChatGPT and save the reply as
+        <code>analysis/{{ cfg.slug }}/{{ c.ticker }}.json</code>, or set an API key and re-run.</div>
+      <h3>Company description (Yahoo Finance)</h3>
+      <p class="small">{{ c.info.longBusinessSummary|truncate(900) }}</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="charts">
+    <div class="box" style="padding:5px 7px;">{{ c.price_svg|safe }}</div>
+    <div class="box" style="padding:5px 7px;">{{ c.q_svg|safe }}</div>
+  </div>
+
+  <div class="footer">
+    <span class="src">{% if w and w.sources %}Sources: {% for s in w.sources[:3] %}<a href="{{ s.url }}">{{ s.title|truncate(40) }}</a>{{ ' · ' if not loop.last }}{% endfor %}
+      {% else %}Data: Yahoo Finance{% endif %}</span>
+    <span style="white-space:nowrap;padding-left:8px;">Latest reported qtr in data: {{ c.latest_q }} · {{ loop.index + 3 }}</span>
+  </div>
+</section>
+{% endfor %}
+
+{# =============================== 5. LONG / SHORT =============================== #}
+<section class="page">
+  <h2>The call: best long and best short</h2>
+  {% if ls.long %}
+  <p class="muted" style="margin-top:3px;">{{ ls.screen_vs_judgment }}</p>
+  <div class="ls-grid">
+    {% for side in ['long','short'] %}{% set p = ls[side] %}{% set cc = by_tk[p.ticker] %}
+    <div class="ls {{ side }}">
+      <div class="tag {{ side }}">{{ side|upper }}</div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:6px;">
+        <div class="tk">{{ p.ticker }}</div><div class="small muted" style="text-align:right;">{{ names[p.ticker] }}<br>Composite rank {{ cc.c.rank }} of {{ scored.n }}</div>
+      </div>
+      <div style="font-weight:700;font-size:10.5pt;margin:6px 0 3px;">{{ p.title }}</div>
+      <p class="small">{{ p.summary }}</p>
+      <div class="kv">
+        <div>EV/EBITDA<b>{{ cc.m.ev_ebitda|mult }}</b></div><div>Op. margin<b>{{ cc.m.op_margin|pct_plain }}</b></div>
+        <div>ND/EBITDA<b>{{ cc.m.net_debt_ebitda|mult }}</b></div><div>Short int.<b>{{ cc.m.short_pct|pct_plain }}</b></div>
+      </div>
+      <h3>Why</h3><ul>{% for a in p.arguments %}<li>{{ a }}</li>{% endfor %}</ul>
+      <h3>Risks to the call</h3><ul>{% for a in p.risks %}<li>{{ a }}</li>{% endfor %}</ul>
+      <h3>We'd exit if…</h3><p class="small">{{ p.invalidation }}</p>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="grid2" style="margin-top:12px;">
+    <div class="box"><b>Runner-up long: {{ ls.runner_up_long.ticker }}.</b> <span class="small">{{ ls.runner_up_long.why }}</span></div>
+    <div class="box"><b>Runner-up short: {{ ls.runner_up_short.ticker }}.</b> <span class="small">{{ ls.runner_up_short.why }}</span></div>
+  </div>
+  <div class="box" style="margin-top:10px;background:var(--soft);border:none;"><b>Pair trade.</b> <span class="small">{{ ls.pair_trade }}</span></div>
+  {% else %}
+  <div class="pending" style="margin-top:14px;">Long/short decision pending. Paste <code>output/{{ cfg.slug }}/prompts_to_paste/LONG_SHORT.md</code> into an AI chat and save the reply as <code>analysis/{{ cfg.slug }}/long_short.json</code>.</div>
+  {% endif %}
+  <div class="footer"><span>AI decision {% if ls._generated_by %}by {{ ls._generated_by }}{% endif %} {% if ls._as_of %}on {{ ls._as_of }}{% endif %}</span><span>{{ 4 + scored.n }}</span></div>
+</section>
+
+{# =============================== 6. METHODOLOGY =============================== #}
+<section class="page">
+  <h2>Methodology, sources and AI prompts</h2>
+  <div class="grid2" style="margin-top:10px;">
+    <div>
+      <h3 style="margin-top:0;">Quantitative data</h3>
+      <p>All market and financial figures are pulled live from Yahoo Finance (via the open-source <code>yfinance</code> library) each
+        time the report is generated. No numbers are typed in by hand. TTM margins are the sum of the last four reported quarters.
+        Revenue growth compares the latest quarter with the same quarter a year earlier. Net debt = total debt (incl. leases) − cash and investments.</p>
+      <h3>Composite score</h3>
+      <p>Eleven metrics are converted to percentile ranks within the peer group (so the score is always <i>relative</i>), averaged into
+        five pillars, then weighted per the sector file:</p>
+      <table class="how">
+        <tr><th>Pillar</th><th>Metrics (direction)</th><th>Weight</th></tr>
+        <tr><td>Valuation</td><td>EV/EBITDA ↓, forward P/E ↓</td><td>{{ (cfg.weights.valuation*100)|round|int }}%</td></tr>
+        <tr><td>Profitability</td><td>Operating margin ↑, net margin ↑, ROE ↑</td><td>{{ (cfg.weights.profitability*100)|round|int }}%</td></tr>
+        <tr><td>Balance sheet</td><td>Net debt/EBITDA ↓, cash/revenue ↑</td><td>{{ (cfg.weights.balance_sheet*100)|round|int }}%</td></tr>
+        <tr><td>Momentum</td><td>1-yr return ↑, distance from 52-wk high ↑</td><td>{{ (cfg.weights.momentum*100)|round|int }}%</td></tr>
+        <tr><td>Street view</td><td>Upside to consensus target ↑, short interest ↓</td><td>{{ (cfg.weights.street*100)|round|int }}%</td></tr>
+      </table>
+      <p class="small muted" style="margin-top:4px;">Negative EBITDA or earnings make a multiple "not meaningful"; those companies receive the lowest score on that metric.</p>
+      <h3>Division of labor: code vs. AI</h3>
+      <p><b>Code</b> does what must be exact: fetching, calculating, ranking, charting. <b>AI</b> does what needs judgment: researching recent
+        earnings and news, writing the qualitative assessment, and making the final long/short call (it may override the screen if it explains why).</p>
+    </div>
+    <div>
+      <h3 style="margin-top:0;">AI write-ups in this edition</h3>
+      <p class="small">{% set gens = companies|selectattr('w')|map(attribute='w')|map(attribute='_generated_by')|unique|list %}Generated by: {{ gens|join('; ') if gens else 'pending' }}.
+        Each write-up cites its sources, listed below and in each page footer.</p>
+      <h3>Sources cited by the AI</h3>
+      <ul class="tiny src" style="columns:1;">
+        {% for c in companies if c.w %}{% for s in c.w.sources %}<li><b>{{ c.ticker }}</b>: <a href="{{ s.url }}">{{ s.title }}</a></li>{% endfor %}{% endfor %}
+      </ul>
+      <h3>Prompts (plain English, editable in <code>prompts/</code>)</h3>
+      <p class="small"><b>one_pager.md:</b> "Write the qualitative half of a one-page summary… use [the live data], do not contradict it, and do not invent any
+        other numbers… search the web for this company's most recent quarterly earnings release… Return ONLY a JSON object…"</p>
+      <p class="small"><b>long_short.md:</b> "Pick the single best LONG and the single best SHORT… Start from the quantitative screen, but you may override it
+        if the qualitative evidence justifies that… For the short, address crowding, squeeze risk, and borrow…"</p>
+      <h3>Limitations</h3>
+      <ul class="small">
+        <li>Yahoo Finance can lag new filings by days. Each page footer shows the latest quarter in the data.</li>
+        <li>Airline-specific KPIs (CASM-ex, RASM, load factor) are not in free data feeds, so they appear only where the AI cites a filing.</li>
+        <li>For educational use only, not investment advice.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer"><span>Code: run.py · src/ · templates/ · prompts/ · sectors/{% if cfg.code_url %} · <a href="{{ cfg.code_url }}">{{ cfg.code_url }}</a>{% endif %}</span><span>{{ 5 + scored.n }}</span></div>
+</section>
+</body>
+</html>

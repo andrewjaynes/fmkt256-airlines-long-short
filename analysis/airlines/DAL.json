@@ -1,0 +1,43 @@
+{
+  "ticker": "DAL",
+  "model_type": "Global network carrier (premium leader)",
+  "headline": "Highest-quality franchise with strong momentum, but the market already pays for it and fuel forced a large 2026 guidance cut.",
+  "business": "Delta flies from Atlanta, Detroit, Minneapolis, Salt Lake City, New York and other hubs, and earns the industry's richest premium and co-brand card revenue (American Express). Largest market cap in the group at $54.9B.",
+  "recent": [
+    "Q3 2026 operating revenue $20.2B (+21.1%); net income $756M ($1.15/share, -47%); adjusted EPS $1.72 vs $1.70; adjusted operating margin 9.4% vs 11.1%.",
+    "Cut 2026 adjusted EPS guidance to $5.10-$5.60 from $6.50-$7.50, citing a ~$6B fuel cost increase; Q4 adjusted EPS guided to $1.15-$1.65.",
+    "Adjusted Q3 earnings of ~$1.13B topped United's $833M on lower adjusted revenue, underlining Delta's cost and premium-mix edge."
+  ],
+  "strengths": [
+    "Strongest brand and premium/loyalty economics in the industry",
+    "+44% 1-year return, near the top of the group",
+    "Only network carrier paying a dividend"
+  ],
+  "risks": [
+    "Thin cash ($3.8B, 5% of revenue), the lowest liquidity ratio of the peers",
+    "Priciest forward P/E among profitable majors (11.4x)",
+    "Fuel-driven estimate cuts may continue"
+  ],
+  "catalysts": [
+    "2027 outlook at January investor update",
+    "Amex remuneration growth",
+    "Fuel price relief"
+  ],
+  "stance": "Neutral",
+  "sources": [
+    {
+      "title": "RTTNews: Delta drops on cautious Q4 view after weak Q3",
+      "url": "https://www.rttnews.com/3697924/delta-stock-drops-on-cautious-earnings-view-in-q4-fy26-after-weak-q3.aspx"
+    },
+    {
+      "title": "View from the Wing: Delta made more profit on lower sales",
+      "url": "https://viewfromthewing.com/united-airlines-reports-earnings-record-revenue-but-delta-made-35-more-profit-on-lower-sales/"
+    },
+    {
+      "title": "24/7 Wall St: airline stocks rise as oil eases (Oct 20)",
+      "url": "https://247wallst.com/investing/2026/10/20/american-airlines-rises-5-ahead-of-earnings-as-oil-prices-ease-united-airlines-and-delta-climb-3/"
+    }
+  ],
+  "_as_of": "2026-11-03",
+  "_generated_by": "Claude (Opus 5.5) in Claude Code, with live web search of Q3 2026 earnings coverage"
+}

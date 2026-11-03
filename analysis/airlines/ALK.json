@@ -1,0 +1,43 @@
+{
+  "ticker": "ALK",
+  "model_type": "West Coast network + Hawaiian (merged)",
+  "headline": "Hawaiian integration is done and loyalty is growing fast, but a guided full-year loss and 8.8x leverage leave little margin for error.",
+  "business": "Alaska Air Group combines Alaska Airlines (Seattle, Portland, Bay Area, Los Angeles) with Hawaiian Airlines (acquired 2024), adding widebodies for Pacific and new Seattle long-haul flying. A oneworld member with a strong West Coast loyalty base.",
+  "recent": [
+    "Q3 2026 revenue $4.3B (+14%), unit revenue up nearly 12% on capacity +2.4%; GAAP net loss $147M ($1.32/share).",
+    "Adjusted EPS $0.36 excluding a $0.67 tax catch-up ($0.31 loss including it); full-year 2026 guided to an adjusted loss of $5.00-$5.50/share on a $1.8B fuel headwind.",
+    "Loyalty cash remuneration +21% to $721M and managed corporate revenue +30%; the single passenger service system went live in Q2."
+  ],
+  "strengths": [
+    "Fast-growing loyalty and corporate revenue",
+    "Integration risk largely behind it",
+    "Low price/book (1.2x) and 35% upside to target"
+  ],
+  "risks": [
+    "Net debt/EBITDA of 8.8x and a guided 2026 loss",
+    "Most expensive EV/EBITDA of the network carriers (15.9x)",
+    "Hawaii and Pacific demand volatility"
+  ],
+  "catalysts": [
+    "Merger synergy delivery in 2027",
+    "New Seattle international routes ramping",
+    "Liquidity rebuild and debt paydown once fuel stabilizes"
+  ],
+  "stance": "Neutral",
+  "sources": [
+    {
+      "title": "Alaska Air Group reports Q3 2026 results",
+      "url": "https://news.alaskaair.com/company/alaska-air-group-reports-third-quarter-2026-results/"
+    },
+    {
+      "title": "Alaska Air Group reports Q2 2026 results",
+      "url": "https://news.alaskaair.com/company/alaska-air-group-reports-second-quarter-2026-results/"
+    },
+    {
+      "title": "Earnings Whispers: ALK Q3 2026 call transcript",
+      "url": "https://www.earningswhispers.com/transcript/ALK/Q32026"
+    }
+  ],
+  "_as_of": "2026-11-03",
+  "_generated_by": "Claude (Opus 5.5) in Claude Code, with live web search of Q3 2026 earnings coverage"
+}

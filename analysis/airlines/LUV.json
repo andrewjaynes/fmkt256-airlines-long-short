@@ -1,0 +1,43 @@
+{
+  "ticker": "LUV",
+  "model_type": "Domestic low-cost / point-to-point",
+  "headline": "Least-levered major with a credible self-help story, but the 2026 rally already prices in much of the turnaround.",
+  "business": "Largest domestic carrier by passengers, with an all-737 fleet and a point-to-point network. It is mid-transformation, adding bag fees, assigned and premium seating, and partnerships to raise revenue per seat.",
+  "recent": [
+    "Q3 2026 record operating revenue of $8.42B (+21.2%); adjusted EPS $0.66; GAAP net income $270M vs $54M a year earlier.",
+    "Full-year 2026 adjusted EPS guidance now $2.60-$2.85, down from $3.25-$4.25 in July, on higher fuel; Q4 guided to $0.55-$0.80.",
+    "Stock up 47% over 12 months, the best of any major, as investors reward the business-model changes."
+  ],
+  "strengths": [
+    "Lowest leverage in the group (net debt/EBITDA 1.2x)",
+    "Self-help revenue initiatives independent of the cycle",
+    "Dividend payer (1.6% yield)"
+  ],
+  "risks": [
+    "Thin 4.4% operating margin; cost inflation from labor deals",
+    "Only 13% upside to consensus target after the rally",
+    "Domestic-only exposure to a consumer slowdown"
+  ],
+  "catalysts": [
+    "Revenue uplift from seating and fee initiatives",
+    "2027 margin targets",
+    "Fleet/Boeing delivery timing"
+  ],
+  "stance": "Neutral",
+  "sources": [
+    {
+      "title": "Quartr: Southwest Q3 2026 earnings summary",
+      "url": "https://quartr.com/events/southwest-airlines-co-luv-q3-2026_3e9aLg1e"
+    },
+    {
+      "title": "TravelExtra: Southwest cuts 2026 profit guidance as fuel rises",
+      "url": "https://www.travelextra.ie/?p=153957"
+    },
+    {
+      "title": "Bernama: U.S. airline Q3 2026 results",
+      "url": "https://bernama.com/en/world/news.php?id=2624535"
+    }
+  ],
+  "_as_of": "2026-11-03",
+  "_generated_by": "Claude (Opus 5.5) in Claude Code, with live web search of Q3 2026 earnings coverage"
+}

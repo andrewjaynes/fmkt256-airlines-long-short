@@ -1,0 +1,47 @@
+{
+ "sector": "U.S. Airlines",
+ "config": "airlines.yaml",
+ "n": 9,
+ "generated": "2026-11-03T03:54",
+ "ranking": [
+  [
+   "UAL",
+   78
+  ],
+  [
+   "SKYW",
+   76
+  ],
+  [
+   "ALGT",
+   67
+  ],
+  [
+   "DAL",
+   64
+  ],
+  [
+   "LUV",
+   64
+  ],
+  [
+   "ALK",
+   40
+  ],
+  [
+   "AAL",
+   36
+  ],
+  [
+   "ULCC",
+   31
+  ],
+  [
+   "JBLU",
+   21
+  ]
+ ],
+ "long": "SKYW",
+ "short": "JBLU",
+ "ai_pending": 0
+}

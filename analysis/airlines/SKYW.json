@@ -1,0 +1,39 @@
+{
+  "ticker": "SKYW",
+  "model_type": "Regional airline (capacity-purchase contracts)",
+  "headline": "Fixed-fee contracts with the majors shield SkyWest from the fuel shock: it grew EPS while peers cut guidance, yet trades at 5.3x EBITDA.",
+  "business": "The largest U.S. regional airline (522 regional jets in service or under contract), flying as United Express, Delta Connection, American Eagle and Alaska. Most flying is under capacity-purchase agreements (CPAs) where the major partner pays a fixed fee and bears fuel cost.",
+  "recent": [
+    "Q3 2026 diluted EPS of $3.08, up from $2.81 a year earlier, on revenue of $1.12B (reported Oct 29).",
+    "Higher fuel prices hurt only the smaller prorate (revenue-sharing) segment, where SkyWest does bear fuel.",
+    "Repurchased $75M of stock in Q3 with ~$238M of authorization left; 69 more E175s are scheduled for delivery, mostly to partner contracts."
+  ],
+  "strengths": [
+    "Business model largely passes fuel cost to partners",
+    "Cheapest stock in the group: EV/EBITDA 5.3x, forward P/E 7.6x",
+    "Highest margins (14% operating, 9.8% net)"
+  ],
+  "risks": [
+    "Concentrated customers: pressured majors could cut regional flying",
+    "Prorate segment does carry fuel risk",
+    "Pilot supply and contract renewal terms"
+  ],
+  "catalysts": [
+    "Q4 results and placement of 33 still-unassigned E175 deliveries",
+    "Re-rating as the market recognizes fuel insulation",
+    "Ongoing buybacks ($238M authorized)"
+  ],
+  "stance": "Overweight",
+  "sources": [
+    {
+      "title": "SkyWest Q3 2026 earnings release (SEC 8-K, Ex. 99.1)",
+      "url": "https://www.sec.gov/Archives/edgar/data/0000793733/000110465926120182/skyw-ex99d1.htm"
+    },
+    {
+      "title": "Yahoo Finance: SKYW quote and financials",
+      "url": "https://finance.yahoo.com/quote/SKYW/"
+    }
+  ],
+  "_as_of": "2026-11-03",
+  "_generated_by": "Claude (Opus 5.5) in Claude Code, with live web search of Q3 2026 earnings coverage"
+}

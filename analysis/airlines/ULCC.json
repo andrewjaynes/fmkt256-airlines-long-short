@@ -1,0 +1,43 @@
+{
+  "ticker": "ULCC",
+  "model_type": "Ultra-low-cost carrier",
+  "headline": "The biggest winner from Spirit's collapse: the stock doubled, now trades above its consensus target, and 42% of the float is short.",
+  "business": "Frontier is now the largest U.S. ultra-low-cost carrier, with an all-Airbus A320neo-family fleet and the industry's lowest unit costs. It earns heavily from ancillary fees and absorbed displaced Spirit demand after Spirit shut down in May 2026.",
+  "recent": [
+    "Q3 2026 revenue of $1.36B (+53%, the fastest growth in the industry); fare revenue per passenger +71% to $67.82; passengers +18%.",
+    "Adjusted profit of $40M beat expectations; GAAP net loss of $104M on lease termination and fleet charges. Fuel expense +82%.",
+    "Q4 guided to adjusted EPS of -$0.15 to +$0.05 at $4.75/gal fuel, with RASM up more than 20% and capacity +5-6%."
+  ],
+  "strengths": [
+    "Lowest cost base in the industry",
+    "Pricing power after Spirit's exit",
+    "+101% 1-year return: strong momentum"
+  ],
+  "risks": [
+    "Negative TTM EBITDA and operating margin (-9.5%)",
+    "Price already 11% above consensus target",
+    "Labor and fuel inflation hit thin ULCC margins hardest"
+  ],
+  "catalysts": [
+    "Q4 results and 2027 guidance: first full year without Spirit",
+    "2027 capacity plan (5-7% growth)",
+    "Short covering or squeeze"
+  ],
+  "stance": "Underweight",
+  "sources": [
+    {
+      "title": "Frontier Q3 2026 earnings release (SEC 8-K)",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001670076/000167007626000102/frontier_earningsreleasexq.htm"
+    },
+    {
+      "title": "Airways: Frontier Q3 2026 revenue, Spirit tailwind",
+      "url": "https://airwaysmag.com/new-post/frontier-q3-2026-revenue-spirit-tailwind"
+    },
+    {
+      "title": "Axios: Frontier faces the pressures that destroyed Spirit",
+      "url": "https://axios.com/2026/05/05/frontier-spirit-airlines-budget-travel"
+    }
+  ],
+  "_as_of": "2026-11-03",
+  "_generated_by": "Claude (Opus 5.5) in Claude Code, with live web search of Q3 2026 earnings coverage"
+}

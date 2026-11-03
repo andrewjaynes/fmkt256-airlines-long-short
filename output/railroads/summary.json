@@ -1,0 +1,43 @@
+{
+ "sector": "U.S. Class I Railroads",
+ "config": "railroads.yaml",
+ "n": 8,
+ "generated": "2026-11-03T03:53",
+ "ranking": [
+  [
+   "UNP",
+   80
+  ],
+  [
+   "CNI",
+   67
+  ],
+  [
+   "CSX",
+   64
+  ],
+  [
+   "CP",
+   55
+  ],
+  [
+   "NSC",
+   51
+  ],
+  [
+   "WAB",
+   47
+  ],
+  [
+   "TRN",
+   46
+  ],
+  [
+   "GBX",
+   38
+  ]
+ ],
+ "long": null,
+ "short": null,
+ "ai_pending": 9
+}

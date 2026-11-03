@@ -1,0 +1,43 @@
+{
+  "ticker": "JBLU",
+  "model_type": "Northeast low-cost hybrid",
+  "headline": "Revenue is up 21% yet losses are widening; with $8.4B of debt on a $1.2B equity value, the stock is a leveraged bet on fuel.",
+  "business": "JetBlue is a low-cost carrier focused on New York (JFK), Boston and Fort Lauderdale, with Mint premium transatlantic flying. It is executing its JetForward plan and a Blue Sky loyalty partnership with United after its Spirit merger was blocked.",
+  "recent": [
+    "Q3 2026 net loss of $257M ($0.68/share) vs $143M a year ago, despite revenue +21.1% to $2.8B; adjusted loss of $0.60 missed the -$0.55 consensus.",
+    "Fuel averaged $3.91/gal (+57%); operating margin -5.1%; nine-month net loss totals $823M.",
+    "Liquidity about $2.2B (including a $600M undrawn revolver) against roughly $8.4B of debt; Q4 RASM guided +18-22% at $4.64/gal fuel."
+  ],
+  "strengths": [
+    "Strong unit-revenue momentum after Spirit's exit",
+    "Valuable Northeast slots and a premium Mint product",
+    "Partnership with United widens loyalty reach"
+  ],
+  "risks": [
+    "Net debt/EBITDA of 94x: EBITDA barely covers interest",
+    "Cash burn may force dilutive equity or costly debt",
+    "Most exposed balance sheet if fuel stays above $4.50"
+  ],
+  "catalysts": [
+    "Q4 results and 2027 liquidity plan",
+    "Possible capital raise",
+    "Fuel price direction"
+  ],
+  "stance": "Underweight",
+  "sources": [
+    {
+      "title": "JetBlue Q3 2026 earnings release (SEC 8-K)",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001158463/000115846326000095/ex991-earningsreleaseq32026.htm"
+    },
+    {
+      "title": "Airways: JetBlue Q3 2026 loss as fuel costs rise",
+      "url": "https://www.airwaysmag.com/new-post/jetblue-q3-2026-loss-revenue-fuel-costs"
+    },
+    {
+      "title": "MarketScreener: fuel bill may upend JetBlue's return to profit",
+      "url": "https://www.marketscreener.com/news/big-fuel-bill-spirit-bailout-may-upend-jetblue-airways-return-to-profitability-ce7f59dcdf80f02d"
+    }
+  ],
+  "_as_of": "2026-11-03",
+  "_generated_by": "Claude (Opus 5.5) in Claude Code, with live web search of Q3 2026 earnings coverage"
+}
